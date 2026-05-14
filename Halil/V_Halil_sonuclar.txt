@@ -1,0 +1,65 @@
+==================================================
+ELEKTRİKLİ MOTOR SAĞLIĞI ANALİZ MERKEZİ
+Çalıştıran: Halil
+Tarih: 14.05.2026
+==================================================
+
+[VERİ HAZIRLAMA]
+- Veri kaynağı: newdata.csv (Electric Motor Temperature - Kaggle)
+- Temizleme adımları: Tekrar eden satırlar silindi, eksik veriler medyan ile dolduruldu, IQR yöntemiyle aykırı değerler ayıklandı, Min-Max normalizasyon uygulandı.
+- Hedef değişken: Motor_Health (stator_winding sıcaklığı 90. yüzdeliği aşanlar arızalı = 1, diğerleri sağlıklı = 0)
+
+==================================================
+[MODEL EĞİTİMİ]
+- Kullanılan algoritmalar: Random Forest, XGBoost
+- Eğitim/Test ayrımı: %80 / %20
+- Seçilen özellikler: i_q, i_d, motor_speed, ambient
+
+==================================================
+[MODEL PERFORMANS DEĞERLENDİRMESİ]
+
+              precision    recall  f1-score   support
+           0       0.98      1.00      0.99    225643
+           1       0.95      0.80      0.87     25071
+    accuracy                           0.98    250714
+   macro avg       0.96      0.90      0.93    250714
+weighted avg       0.98      0.98      0.97    250714
+
+XGBoost ROC-AUC Skoru: 0.8279
+
+==================================================
+[SONUÇLARIN YORUMU]
+
+- Genel doğruluk (accuracy): %98 — yüksek görünse de veri dengesizliğinden (%90 sağlıklı vs %10 arızalı) kaynaklanıyor.
+- Sağlıklı motorlar (sınıf 0): Precision %98, Recall %100 — neredeyse hatasız tespit.
+- Arızalı motorlar (sınıf 1): Precision %95, Recall %80 — modelimiz arızaların %80'ini doğru yakalıyor, %20'sini kaçırıyor.
+- ROC-AUC: 0.83 — kestirimci bakım uygulamaları için kabul edilebilir bir performans (1.0 mükemmel, 0.5 rastgele).
+
+==================================================
+[ÖZELLİK ÖNEM SIRALAMASI - Endüstriyel PdM İçin Kritik Parametreler]
+
+  Sensör Parametresi    Önem Skoru
+1 i_d                   0.373955  (%37)
+0 i_q                   0.234268  (%23)
+3 ambient               0.196055  (%20)
+2 motor_speed           0.195723  (%20)
+
+Yorum: Motor sağlığını belirleyen en kritik sensörler akım bileşenleridir (i_d ve i_q toplamda %60). Bu, motor zorlandığında ilk olarak akım çekişinin değiştiği şeklindeki endüstriyel beklentiyle uyumludur. Ortam sıcaklığı ve motor hızı ikincil etkenlerdir.
+
+==================================================
+[ÜRETİLEN GÖRSELLER]
+
+1. V_Halil_heatmap.png        — Sensör Özellikleri Korelasyon Matrisi
+2. V_Halil_violin.png         — Sağlık Durumuna Göre Sıcaklık Dağılımı
+3. V_Halil_scatter.png        — Akım ve Hızın Motor Sağlığı Üzerindeki Etkisi
+4. V_Halil_confusion_matrix.png — Tahmin Başarısı (Confusion Matrix)
+
+==================================================
+[GELECEK ÇALIŞMALAR İÇİN ÖNERİLER]
+
+- Sınıf dengesizliğini gidermek için SMOTE veya class weighting denenebilir.
+- Recall'ü artırmak için karar eşiği (threshold) optimize edilebilir.
+- LSTM gibi zaman serisi modelleri ile arıza tahmini önceden yapılabilir.
+- Hiperparametre optimizasyonu (GridSearch / Optuna) ile model performansı iyileştirilebilir.
+
+==================================================
