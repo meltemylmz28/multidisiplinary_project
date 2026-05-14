@@ -219,8 +219,5 @@ __marimo__/
 # Proje özelindeki veri setleri
 *.csv
 
-# Otomatik oluşturulan grafikler (Rapor için klasöründe kalsın ama GitHub'a gitmesin)
-*.png
-
 # Proje dosyaları (Opsiyonel)
  notlar.docx
