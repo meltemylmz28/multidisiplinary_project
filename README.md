@@ -8,4 +8,7 @@ otomatik olarak kaydedilecek.)
 # NOT: PROJE İÇİNDE BENİM ÇALIŞTIRDIĞIM GÖRSELLER BULUNUYOR. SİZ DEĞİŞİKLİK YAPTIĞINIZDA RESİMLERİ V_(adınız)_(grafik türü) ŞEKLİNDE KAYDEDİNİZ.
 3. Terminalde main.py dosyasını çalıştırın.(bu makine öğrenmesi için gerekli işlemleri başlatır. Grafikler için pencere açılması durumunda yukarıdaki gibi proccessi yürütün.)
 # oluşan resimler rapor ve analiz için önemli olduğundan silmemeye dikkat edelim. 
+# projeyi kendi bilgisayarınızdan push ederken aşağıda sıra gelen ilk iki satırı projenin gitignore dosyasının en altına inerek yapıştırınız. 
+# Proje özelindeki veri setleri
+*.csv
 # KOLAY GELSİN.
