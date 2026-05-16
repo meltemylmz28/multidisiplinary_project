@@ -4,7 +4,7 @@ from sklearn.preprocessing import MinMaxScaler
 
 def get_cleaned_data():
     # Veri Yükleme
-    df = pd.read_csv('newdata.csv')
+    df = pd.read_csv('../newdata.csv')
 
     # Aşama 0: Temizlik
     df = df.drop_duplicates()

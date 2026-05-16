@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
-from analyse import get_cleaned_data
+from version1.analyse import get_cleaned_data
 
 def run_visualizations():
     df = get_cleaned_data()

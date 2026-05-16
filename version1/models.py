@@ -1,4 +1,3 @@
-import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from tqdm import tqdm  # Yüzdelik ilerleme çubuğu için
@@ -6,7 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from xgboost import XGBClassifier
 from sklearn.metrics import classification_report, roc_auc_score, confusion_matrix
-from analyse import get_cleaned_data
+from version1.analyse import get_cleaned_data
 
 
 def train_ml_process():

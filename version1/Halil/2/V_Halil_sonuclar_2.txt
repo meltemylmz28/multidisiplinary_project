@@ -1,0 +1,37 @@
+=== ELEKTRİKLİ MOTOR SAĞLIĞI ANALİZ MERKEZİ ===
+
+[1/4] Veri hazırlanıyor...
+[2/4] Random Forest Modeli Eğitiliyor...
+Eğitim İlerlemesi: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [03:10<00:00, 19.06s/it]
+
+[3/4] XGBoost Modeli Eğitiliyor...
+[0]     validation_0-logloss:0.21656
+[25]    validation_0-logloss:0.12898
+[50]    validation_0-logloss:0.11794
+[75]    validation_0-logloss:0.11130
+[99]    validation_0-logloss:0.10729
+
+[4/4] Performans Metrikleri Hesaplanıyor...
+
+==================================================
+AŞAMA 3: MODEL PERFORMANS DEĞERLENDİRMESİ
+              precision    recall  f1-score   support
+
+           0       0.98      1.00      0.99    225643
+           1       0.95      0.80      0.87     25071
+
+    accuracy                           0.98    250714
+   macro avg       0.96      0.90      0.93    250714
+weighted avg       0.98      0.98      0.97    250714
+
+XGBoost ROC-AUC Skoru: 0.8279
+==================================================
+
+[Aşama 4] Endüstriyel PdM İçin Kritik Parametreler:
+  Sensör Parametresi  Önem Skoru
+1                i_d    0.373955
+0                i_q    0.234268
+3            ambient    0.196055
+2        motor_speed    0.195723
+
+Bilgi: Tüm grafikler yüksek çözünürlüklü olarak kaydedildi.
