@@ -216,6 +216,8 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+# Proje özelindeki veri setleri
+*.csv
 
 # Proje dosyaları (Opsiyonel)
  notlar.docx
